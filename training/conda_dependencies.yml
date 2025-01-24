@@ -18,8 +18,9 @@ name: amlproj06_training_env
 dependencies:
   # The python interpreter version.
   # Currently Azure ML Workbench only supports 3.5.2 and later.
-  - python=3.7.*
-  - pip=20.2.4
+  - python=3.9.*
+  - pip
+
 
   - pip:
       # Base AzureML SDK
@@ -30,6 +31,8 @@ dependencies:
       - azureml-defaults
 
       # Training deps
+      - numpy
+      - pandas
       - scikit-learn
 
       # Scoring deps
@@ -47,5 +50,4 @@ dependencies:
       # Job lib- whatever I don't know what we use it for
       - joblib
       
-      #pandas
-      - pandas==1.1.3
+      
