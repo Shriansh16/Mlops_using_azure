@@ -31,13 +31,16 @@ def train_model(data, parameters):
     train_data = data[0]
     valid_data = data[1]
 
-    # valid_sets must be a list or tuple
+    # Update parameters to include early stopping configuration
     model = lightgbm.train(
         parameters,
         train_data,
-        valid_sets=[valid_data],  # Wrap valid_data in a list
+        valid_sets=[valid_data],
         num_boost_round=500,
-        early_stopping_rounds=20
+        early_stopping_rounds=20,
+        callbacks=[
+            lightgbm.early_stopping(stopping_rounds=20)
+        ]
     )
     return model
 
