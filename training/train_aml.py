@@ -101,6 +101,7 @@ def main():
     data = split_data(df)
 
     # Train the model
+    data['ps_ind_04_cat']=data['ps_ind_04_cat'].astype('int')
     model = train_model(data, train_args)
 
     # Evaluate and log the metrics returned from the train function
