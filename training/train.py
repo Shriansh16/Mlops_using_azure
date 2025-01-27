@@ -11,6 +11,8 @@ def split_data(data_df):
     """Split a dataframe into training and validation dataset"""
 
     features = data_df.drop(['target', 'id'], axis=1)
+    bool_columns = features.select_dtypes(include=['bool']).columns
+    features[bool_columns] = features[bool_columns].astype(int)
     labels = np.array(data_df['target'])
     features_train, features_valid, labels_train, labels_valid = \
         train_test_split(features, labels, test_size=0.2,
@@ -31,9 +33,6 @@ def train_model(data, parameters):
     train_data = data[0]
     valid_data = data[1]
     
-    # Convert boolean columns to int
-    train_data = train_data.applymap(lambda x: 1 if isinstance(x, bool) and x else 0 if isinstance(x, bool) else x)
-    valid_data = valid_data.applymap(lambda x: 1 if isinstance(x, bool) and x else 0 if isinstance(x, bool) else x)
 
     # Update parameters to include early stopping configuration
     model = lightgbm.train(
