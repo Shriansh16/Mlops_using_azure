@@ -30,6 +30,10 @@ def train_model(data, parameters):
     """Train a model with the given datasets and parameters"""
     train_data = data[0]
     valid_data = data[1]
+    
+    # Convert boolean columns to int
+    train_data = train_data.applymap(lambda x: 1 if isinstance(x, bool) and x else 0 if isinstance(x, bool) else x)
+    valid_data = valid_data.applymap(lambda x: 1 if isinstance(x, bool) and x else 0 if isinstance(x, bool) else x)
 
     # Update parameters to include early stopping configuration
     model = lightgbm.train(
