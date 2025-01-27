@@ -8,7 +8,7 @@ import lightgbm
 
 
 def split_data(data_df):
-    """Split a dataframe into training and validation datasets"""
+    """Split a dataframe into training and validation dataset"""
 
     features = data_df.drop(['target', 'id'], axis=1)
     labels = np.array(data_df['target'])
