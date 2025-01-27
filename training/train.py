@@ -23,7 +23,8 @@ def split_data(data_df):
         features_valid,
         label=labels_valid,
         free_raw_data=False)
-
+    train_data['ps_ind_04_cat']=train_data['ps_ind_04_cat'].astype('int')
+    valid_data['ps_ind_04_cat']=valid_data['ps_ind_04_cat'].astype('int')
     return (train_data, valid_data)
 
 
