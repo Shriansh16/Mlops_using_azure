@@ -8,11 +8,9 @@ import lightgbm
 
 
 def split_data(data_df):
-    """Split a dataframe into training and validation dataset"""
+    """Split a dataframe into training and validation datasets"""
 
     features = data_df.drop(['target', 'id'], axis=1)
-    bool_columns = features.select_dtypes(include=['bool']).columns
-    features[bool_columns] = features[bool_columns].astype(int)
     labels = np.array(data_df['target'])
     features_train, features_valid, labels_train, labels_valid = \
         train_test_split(features, labels, test_size=0.2,
@@ -23,8 +21,9 @@ def split_data(data_df):
         features_valid,
         label=labels_valid,
         free_raw_data=False)
-    train_data['ps_ind_04_cat']=train_data['ps_ind_04_cat'].astype('int')
-    valid_data['ps_ind_04_cat']=valid_data['ps_ind_04_cat'].astype('int')
+    train_data.data = train_data.data.applymap(lambda x: int(x) if isinstance(x, bool) else x)
+    valid_data.data = valid_data.data.applymap(lambda x: int(x) if isinstance(x, bool) else x)
+
     return (train_data, valid_data)
 
 
