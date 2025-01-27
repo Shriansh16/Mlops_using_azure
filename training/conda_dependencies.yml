@@ -6,7 +6,6 @@ dependencies:
   - pip
 
   - pip:
-      - --upgrade pip
       - azureml-sdk
       - azureml-defaults
       - numpy
