@@ -36,10 +36,7 @@ def train_model(data, parameters):
         parameters,
         train_data,
         valid_sets=[valid_data],
-        num_boost_round=500,
-        callbacks=[
-            lightgbm.early_stopping(stopping_rounds=20)
-        ]
+        num_boost_round=500
     )
     return model
 
