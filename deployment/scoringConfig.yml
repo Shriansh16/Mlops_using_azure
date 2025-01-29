@@ -1,6 +1,7 @@
 name: insurance_inference_env
 dependencies:
   - python=3.9.*
+  - joblib
   - pip
   - pip:
       - azureml-sdk
@@ -11,5 +12,5 @@ dependencies:
       - inference-schema[numpy-support]
       - lightgbm
       - LightGBM
-      - joblib # Ensure latest joblib version
+
       
