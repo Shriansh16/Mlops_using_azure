@@ -1,7 +1,6 @@
 name: insurance_inference_env
 dependencies:
   - python=3.9.*
-  - joblib
   - pip
   - pip:
       - azureml-sdk
@@ -9,6 +8,7 @@ dependencies:
       - azureml-core
       - azureml-inference-server-http  # Ensures inference works
       - scikit-learn
+      - joblib
       - inference-schema[numpy-support]
       - lightgbm
       - LightGBM

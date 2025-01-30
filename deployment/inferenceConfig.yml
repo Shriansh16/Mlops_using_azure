@@ -1,6 +1,9 @@
 entryScript: score.py
 runtime: python
-condaDependenciesFile: scoringConfig.yml
-sourceDirectory: 
+condaFile: scoringConfig.yml
+extraDockerfileSteps:
+schemaFile:
+sourceDirectory:
 enableGpu: False
-baseImage: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04   # Explicit base image
+baseImage:
+baseImageRegistry:
